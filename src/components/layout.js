@@ -6,46 +6,40 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import MainMenu from "../components/MainMenu"
+import styled , { createGlobalStyle } from 'styled-components'
 
-import Header from "./header"
-import "./layout.css"
+const GlobalStyles = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+  body {
+    font-family: 'Poppins' , sans-serif;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+`
+
+const LayoutWrapper = styled.div`
+  max-width:960px;
+  margin: 0 auto;
+`
+
+
+
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <div>
+      <GlobalStyles />
+      <MainMenu />
+      <LayoutWrapper>
+        {children}
+      </LayoutWrapper>
+    </div>
   )
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 export default Layout

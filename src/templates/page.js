@@ -1,9 +1,11 @@
 import React from "react"
+import Layout from "../components/layout"
 
 export default ({ pageContext }) => (
-  <div>
-    <h1>
+  <Layout>
+    <h1 >
       {pageContext.title}
     </h1>
-  </div>
+    <div dangerouslySetInnerHTML={{__html: pageContext.content}}/>
+  </Layout>
 );
