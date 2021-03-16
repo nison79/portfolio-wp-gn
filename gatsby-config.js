@@ -46,7 +46,10 @@ module.exports = {
           "**/*/*/tags",
           "**/*/*/taxonomies",
           "**/*/*/users",
-          "**/*/*/menus"
+          "**/*/*/menus",
+          "**/*/*/portfolio",
+          "**/*/*/logo",
+          "**/*/*/favicon"
         ],
       },
     },
