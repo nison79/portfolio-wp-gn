@@ -15,10 +15,12 @@ export default ({ pageContext }) => (
     <strong>
       Website url :
     </strong>
-    <a target="_blank" rel="noreferrer" href={pageContext.acf.portfolio_url}>
+    <a target="_blank" rel="noopener noreferrer" href={pageContext.acf.portfolio_url}>
       {pageContext.acf.portfolio_url}
     </a>
-    <FeaturedImage src={pageContext.featured_media.source_url}/>
+    <div>
+      <FeaturedImage src={pageContext.featured_media.source_url}/>
+    </div>
     <div dangerouslySetInnerHTML={{__html: pageContext.content}}/>
   </Layout>
 );
