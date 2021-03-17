@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const MainMenuWrapper = styled.div`
   display:flex;
   
-  background-color: rgb(3, 27 ,77);
+  background-color: #070E46;
 `
 
 const MainMenuInner = styled.div`
