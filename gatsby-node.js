@@ -120,9 +120,10 @@ exports.createPages = ({ graphql, actions }) => {
               node {
                 excerpt
                 wordpress_id
-                date
+                date(formatString: "Do MMM YYYY HH:mm")
                 title
                 content
+                slug
               }
             }
           }
@@ -146,6 +147,15 @@ exports.createPages = ({ graphql, actions }) => {
                 numberOfPages,
                 currentPage: index +1
               }
+            })
+          })
+
+          const pageTemplate = path.resolve("./src/templates/page.js")
+          _.each(posts, (post) => {
+            createPage({
+              path:`/post/${post.node.slug}`,
+              component: slash(pageTemplate),
+              context: post.node
             })
           })
 
