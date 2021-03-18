@@ -1,28 +1,41 @@
 import React from 'react'
-import SiteInfo from '../components/SiteInfo'
 import Logo from '../components/Logo'
 import { graphql , StaticQuery , Link } from 'gatsby'
 import styled from 'styled-components'
 
 const MainMenuWrapper = styled.div`
   display:flex;
+  background-color: #eeeeee;
   
-  background-color: #070E46;
 `
 
 const MainMenuInner = styled.div`
-  max-width: 960px;
+  max-width: 100%;
   margin:0 auto;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  width:960px;
+  width:100%;
   height:100%;
 `
 
+const MainMenuInner2 = styled.div`
+  max-width: 100%;
+  display:flex;
+  flex-flow:right;
+  align-items:center;
+`
+
 const MenuItem = styled(Link)`
-  color:white;
+  color:black;
   display:block;
   padding: 8px 16px;
+  text-decoration:none;
+  transition: 0.2s ease-in-out ;
+  &:hover {
+    transform:scale(1.2);
+    border-left:1px solid black;
+  }
 `
 
 
@@ -50,13 +63,16 @@ const MainMenu = () => {
     `} render={props => (
       <MainMenuWrapper>
         <MainMenuInner>
-        <Logo/>
-          <SiteInfo />
-          {props.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
-            <MenuItem to = {`/${item.object_slug}`} key={item.title}>
-              {item.title}
-            </MenuItem>
-          ))}
+          <Logo/>
+          {/* <SiteInfo /> */}
+          <MainMenuInner2>
+            {props.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
+              <MenuItem to = {`/${item.object_slug}`} key={item.title}>
+                {item.title}
+              </MenuItem>
+              
+            ))}
+            </MainMenuInner2>
         </MainMenuInner>
       </MainMenuWrapper>  
     )} />

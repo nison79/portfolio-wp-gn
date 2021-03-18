@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const LayoutWrapper = styled.div`
-  max-width:960px;
+  max-width:1024px;
   margin: 0 auto;
 `
 
